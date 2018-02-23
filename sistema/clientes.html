@@ -17,6 +17,8 @@
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <!-- bootstrap-datetimepicker -->
@@ -46,7 +48,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="index.html" class="site_title"><i class="fa fa-users"></i> <span>CALAF</span></a>
+                    <a href="index.html" class="site_title"><img src="images/logo-calaf.png" style="max-width: 50px;"> <span>CALAF</span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -181,7 +183,7 @@
                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nome <span class="required">*</span>
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="first-name" required="required"
+                                                    <input type="text" id="nome" required="required"
                                                            class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
@@ -189,47 +191,57 @@
                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Sobrenome<span class="required">*</span>
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="last-name" name="last-name" required="required"
+                                                    <input type="text" id="sobrenome" name="last-name" required="required"
                                                            class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text"
+                                                    <input id="email" class="form-control col-md-7 col-xs-12" type="text"
                                                            name="middle-name">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">RG</label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text"
+                                                    <input id="rg" class="form-control col-md-7 col-xs-12" type="text"
                                                            name="middle-name">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">CPF</label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text"
+                                                    <input id="cpf" class="form-control col-md-7 col-xs-12" type="text"
                                                            name="middle-name">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Sexo</label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <div id="gender" class="btn-group" data-toggle="buttons">
+                                                    <div id="sexo" class="btn-group" data-toggle="buttons">
                                                         <label class="btn btn-default" data-toggle-class="btn-primary"
                                                                data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="gender" value="male"> &nbsp; Homem &nbsp;
+                                                            <input type="radio" name="gender" value="male"> &nbsp; Masculino &nbsp;
                                                         </label>
                                                         <label class="btn btn-default" data-toggle-class="btn-primary"
                                                                data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="gender" value="female"> Mulher
+                                                            <input type="radio" name="gender" value="female"> Feminino
                                                         </label>
                                                         <label class="btn btn-default" data-toggle-class="btn-primary"
                                                                data-toggle-passive-class="btn-default">
                                                             <input type="radio" name="gender" value="undefined"> Indefinido
                                                         </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Policial <span
+                                                        class="required">*</span>
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div style="margin-top: 5px;">
+                                                        <input type="checkbox" class="js-switch"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -247,7 +259,8 @@
                                                         class="required">*</span>
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                                    <input type="file" class="form-control-file hidden" id="photo-1">
+                                                    <a class="btn btn-primary open-camera" data-camera="#photo-1"><i class="fa fa-camera"></i> Tirar foto</a>
                                                 </div>
                                             </div>
                                             <div class="ln_solid"></div>
@@ -256,7 +269,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-success">Cadastrar cliente</button>
+                                        <button type="submit" class="btn btn-success" data-dismiss="modal" id="cadastrar-cliente">Cadastrar cliente</button>
                                     </div>
 
                                 </div>
@@ -303,7 +316,7 @@
                                             </ul>
                                         </a>
                                     </td>
-                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Cadastrar
+                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Realizar
                                         check-in </a>
                                         <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-2" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar
                                             dados</a>
@@ -332,7 +345,7 @@
                                             </ul>
                                         </a>
                                     </td>
-                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Cadastrar
+                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Realizar
                                         check-in </a>
                                         <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-2" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar
                                             dados</a>
@@ -361,7 +374,7 @@
                                             </ul>
                                         </a>
                                     </td>
-                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Cadastrar
+                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Realizar
                                         check-in </a>
                                         <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-2" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar
                                             dados</a>
@@ -390,7 +403,7 @@
                                             </ul>
                                         </a>
                                     </td>
-                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Cadastrar
+                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Realizar
                                         check-in </a>
                                         <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-2" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar
                                             dados</a>
@@ -419,7 +432,7 @@
                                             </ul>
                                         </a>
                                     </td>
-                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Cadastrar
+                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Realizar
                                         check-in </a>
                                         <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-2" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar
                                             dados</a>
@@ -448,7 +461,7 @@
                                             </ul>
                                         </a>
                                     </td>
-                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Cadastrar
+                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Realizar
                                         check-in </a>
                                         <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-2" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar
                                             dados</a>
@@ -477,7 +490,7 @@
                                             </ul>
                                         </a>
                                     </td>
-                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Cadastrar
+                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Realizar
                                         check-in </a>
                                         <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-2" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar
                                             dados</a>
@@ -506,7 +519,7 @@
                                             </ul>
                                         </a>
                                     </td>
-                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Cadastrar
+                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Realizar
                                         check-in </a>
                                         <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-2" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar
                                             dados</a>
@@ -535,7 +548,7 @@
                                             </ul>
                                         </a>
                                     </td>
-                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Cadastrar
+                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Realizar
                                         check-in </a>
                                         <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-2" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar
                                             dados</a>
@@ -564,7 +577,7 @@
                                             </ul>
                                         </a>
                                     </td>
-                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Cadastrar
+                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Realizar
                                         check-in </a>
                                         <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-2" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar
                                             dados</a>
@@ -593,7 +606,7 @@
                                             </ul>
                                         </a>
                                     </td>
-                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Cadastrar
+                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Realizar
                                         check-in </a>
                                         <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-2" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar
                                             dados</a>
@@ -622,7 +635,7 @@
                                             </ul>
                                         </a>
                                     </td>
-                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Cadastrar
+                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Realizar
                                         check-in </a>
                                         <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-2" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar
                                             dados</a>
@@ -651,7 +664,7 @@
                                             </ul>
                                         </a>
                                     </td>
-                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Cadastrar
+                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Realizar
                                         check-in </a>
                                         <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-2" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar
                                             dados</a>
@@ -680,7 +693,7 @@
                                             </ul>
                                         </a>
                                     </td>
-                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Cadastrar
+                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Realizar
                                         check-in </a>
                                         <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-2" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar
                                             dados</a>
@@ -709,7 +722,7 @@
                                             </ul>
                                         </a>
                                     </td>
-                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Cadastrar
+                                    <td><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-3" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Realizar
                                         check-in </a>
                                         <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg-2" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar
                                             dados</a>
@@ -774,16 +787,26 @@
                                                         <div id="gender" class="btn-group" data-toggle="buttons">
                                                             <label class="btn btn-default active" data-toggle-class="btn-primary"
                                                                    data-toggle-passive-class="btn-default">
-                                                                <input type="radio" name="gender" value="male"> &nbsp; Homem &nbsp;
+                                                                <input type="radio" name="gender" value="male"> &nbsp; Masculino &nbsp;
                                                             </label>
                                                             <label class="btn btn-default" data-toggle-class="btn-primary"
                                                                    data-toggle-passive-class="btn-default">
-                                                                <input type="radio" name="gender" value="female"> Mulher
+                                                                <input type="radio" name="gender" value="female"> Feminino
                                                             </label>
                                                             <label class="btn btn-default" data-toggle-class="btn-primary"
                                                                    data-toggle-passive-class="btn-default">
                                                                 <input type="radio" name="gender" value="undefined"> Indefinido
                                                             </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Policial <span
+                                                            class="required">*</span>
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <div style="margin-top: 5px;">
+                                                            <input type="checkbox" class="js-switch"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -801,7 +824,8 @@
                                                             class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                                        <input type="file" class="form-control-file hidden" id="photo-2">
+                                                        <a class="btn btn-primary open-camera" data-camera="#photo-2"><i class="fa fa-camera"></i> Tirar foto</a>
                                                     </div>
                                                 </div>
                                                 <div class="ln_solid"></div>
@@ -824,7 +848,7 @@
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                             </button>
-                                            <h4 class="modal-title" id="myModalLabel">Cadastrar check-in</h4>
+                                            <h4 class="modal-title" id="myModalLabel">Realizar check-in</h4>
                                         </div>
                                         <div class="modal-body">
 
@@ -835,8 +859,7 @@
                                                 </span>
                                             </div>
 
-                                            <a href="#" class="btn btn-primary btn-xs" style="float: right;"><i class="fa fa-plus"></i> Cadastrar
-                                                check-in </a>
+                                            <a href="#" class="btn btn-primary btn-xs" style="float: right;"><i class="fa fa-plus"></i> Realizar check-in </a>
                                             <br>
                                             <h3>Check-in <small>Lista completa</small></h3>
                                             <table class="table table-hover">
@@ -911,6 +934,8 @@
 <!-- bootstrap-datetimepicker -->
 <script src="../vendors/moment/min/moment.min.js"></script>
 <script src="../vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<!-- Switchery -->
+<script src="../vendors/switchery/dist/switchery.min.js"></script>
 <!-- Datatables -->
 <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -964,6 +989,14 @@
     $('.delete-row').on('click', function (e) {
         e.preventDefault();
         $(this).closest('tr').hide('slow');
+    })
+
+    $('.open-camera').on('click', function (e) {
+        e.preventDefault();
+        $($(this).data('camera')).click();
+    });
+
+    $('#cadastrar-cliente').on('click', function (e) {
     })
 </script>
 </body>
